@@ -1,4 +1,4 @@
-package core;
+package cyclops;
 
 import hxd.Key;
 import hxd.res.DefaultFont;

@@ -1,3 +1,5 @@
+package cyclops;
+
 import hxd.System;
 import haxe.Json;
 

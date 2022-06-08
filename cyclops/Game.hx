@@ -1,4 +1,4 @@
-import core.Scene;
+package cyclops;
 
 class Game extends hxd.App {
   public static var instance(get, null): Game;

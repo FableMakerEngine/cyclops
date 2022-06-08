@@ -1,4 +1,4 @@
-import Game;
+package cyclops;
 
 class Main {
   public static function main() {
