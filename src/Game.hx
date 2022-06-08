@@ -17,7 +17,7 @@ class Game extends hxd.App {
   }
 
   public override function init() {
-    trace('Hello World');
+    trace("Hello World");
     #if (hl && !debug)
     Res.initLocal();
     #else

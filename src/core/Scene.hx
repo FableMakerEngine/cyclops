@@ -42,15 +42,15 @@ class Scene extends h2d.Scene {
     var consoleFont = DefaultFont.get().clone();
     console = new Console(consoleFont, this);
 
-    console.addCommand('version', 'Get System Data', [], () -> {
+    console.addCommand("version", "Get System Data", [], () -> {
       console.log(Utils.getVersion());
     });
 
-    console.addCommand('platform', 'Get platform the game is running on', [], () -> {
+    console.addCommand("platform", "Get platform the game is running on", [], () -> {
       console.log(Utils.getPlatform());
     });
 
-    console.addCommand('gameName', 'Get name of the game', [], () -> {
+    console.addCommand("gameName", "Get name of the game", [], () -> {
       console.log(Utils.getSystemData().name);
     });
 
@@ -73,8 +73,8 @@ class Scene extends h2d.Scene {
       if (console.isActive()) {
         console.hide();
       } else {
-        console.runCommand('cls');
-        console.log('Console ready');
+        console.runCommand("cls");
+        console.log("Console ready");
         console.show();
       }
     }
