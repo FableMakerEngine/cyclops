@@ -23,7 +23,6 @@ class Game extends hxd.App {
     #else
     Res.initEmbed();
     #end
-    changeScene(new scenes.Boot());
   }
 
   public function changeScene(scene: Scene): Void {
