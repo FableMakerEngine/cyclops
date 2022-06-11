@@ -1,19 +1,10 @@
 package cyclops;
 
 class Game extends hxd.App {
-  public static var instance(get, null): Game;
-
   public var scene: Scene;
 
   private function new() {
     super();
-  }
-
-  private static function get_instance(): Game {
-    if (instance == null) {
-      instance = new Game();
-    }
-    return instance;
   }
 
   public override function init() {
@@ -27,7 +18,7 @@ class Game extends hxd.App {
 
   public function changeScene(scene: Scene): Void {
     this.scene = scene;
-    this.scene.game = instance;
+    this.scene.game = this;
 
     setScene(scene);
     scene.init();

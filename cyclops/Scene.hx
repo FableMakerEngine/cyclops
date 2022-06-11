@@ -8,7 +8,7 @@ import h2d.Interactive;
 class Scene extends h2d.Scene {
   public var interaction: Interactive;
   @:isVar
-  public var game(get, set): Game = Game.instance;
+  public var game(get, set): Game;
   public var inteeraction: Interactive;
   public var console: Console;
   public var touchInput: TouchInput;
@@ -35,24 +35,8 @@ class Scene extends h2d.Scene {
   }
 
   public function setupConsole() {
-    if (!Utils.isConsleEnabled()) {
-      return;
-    }
-
     var consoleFont = DefaultFont.get().clone();
     console = new Console(consoleFont, this);
-
-    console.addCommand("version", "Get System Data", [], () -> {
-      console.log(Utils.getVersion());
-    });
-
-    console.addCommand("platform", "Get platform the game is running on", [], () -> {
-      console.log(Utils.getPlatform());
-    });
-
-    console.addCommand("gameName", "Get name of the game", [], () -> {
-      console.log(Utils.getSystemData().name);
-    });
 
     #if debug
     console.show();
