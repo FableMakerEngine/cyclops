@@ -2,6 +2,6 @@ package cyclops;
 
 class Main {
   public static function main() {
-    Game.instance;
+    new Game();
   }
 }

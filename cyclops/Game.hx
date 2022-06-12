@@ -3,7 +3,7 @@ package cyclops;
 class Game extends hxd.App {
   public var scene: Scene;
 
-  private function new() {
+  public function new() {
     super();
   }
 
