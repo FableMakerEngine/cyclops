@@ -4,7 +4,9 @@
 
 --dce full
 
--main cyclops.Main
+--each
+
+-main sample.Main
 
 #if desktop-sdl
 --cmd haxe --run tasks.Build --desktop
