@@ -1,14 +1,33 @@
 package cyclops;
 
 class Game extends hxd.App {
-  public var scene: Scene;
+  public var scene(default, null): Scene;
+
+  @:isVar
+  public static var instance(get, null): Game;
+
+  public var onReady(default, set): Game->Void;
 
   public function new() {
     super();
+    instance = this;
+  }
+
+  public static function get_instance(): Game {
+    if (instance == null) {
+      instance = new Game();
+    }
+    return instance;
+  }
+
+  public function set_onReady(value) {
+    return onReady = value;
   }
 
   public override function init() {
-    trace("Hello World");
+    if (onReady != null) {
+      onReady(this);
+    }
     #if (hl && !debug)
     Res.initLocal();
     #else
