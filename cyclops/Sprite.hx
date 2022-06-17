@@ -1,4 +1,4 @@
-package core;
+package cyclops;
 
 import hxd.Event;
 import h2d.Interactive;

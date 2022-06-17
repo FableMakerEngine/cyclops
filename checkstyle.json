@@ -31,9 +31,18 @@
     {
       "type": "StringLiteral",
       "props": {
-        "policy": "onlySingle",
+        "policy": "doubleAndInterpolation",
         "allowException": false,
         "severity": "ERROR"
+      }
+    },
+    {
+      "type": "MultipleStringLiterals",
+      "props": {
+        "minLength": 2,
+        "ignore": "^\\s+$",
+        "allowDuplicates": 2,
+        "severity": "WARNING"
       }
     },
     {
