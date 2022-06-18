@@ -15,14 +15,14 @@ class Scene extends h2d.Scene {
 
   public function new() {
     super();
-    interaction = new Interactive(width, height, this);
-    interaction.onClick = onClick;
-    interaction.onFocus = onFocus;
-    interaction.onFocusLost = onFocusLost;
-    interaction.onKeyDown = onKeyDown;
-    interaction.onKeyUp = onKeyUp;
-    interaction.cursor = null;
-    touchInput = new TouchInput(this);
+    // interaction = new Interactive(width, height, this);
+    // interaction.onClick = onClick;
+    // interaction.onFocus = onFocus;
+    // interaction.onFocusLost = onFocusLost;
+    // interaction.onKeyDown = onKeyDown;
+    // interaction.onKeyUp = onKeyUp;
+    // interaction.cursor = null;
+    // touchInput = new TouchInput(this);
   }
 
   public function set_game(game: Game) {
