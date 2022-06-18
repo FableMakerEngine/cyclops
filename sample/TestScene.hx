@@ -1,9 +1,7 @@
 package sample;
 
-import cyclops.Bitmap;
 import h3d.mat.Texture;
 import h2d.col.Point;
-import h2d.Tile;
 import cyclops.Sprite;
 
 class TestScene extends cyclops.Scene {
@@ -23,12 +21,12 @@ class TestScene extends cyclops.Scene {
   }
 
   public function createRectSprite() {
-    var rect = new Bitmap(Texture.fromColor(0xffbe60));
-    sprite = new Sprite(width / 2, height / 2, rect, true);
+    var rectTile = h2d.Tile.fromColor(0xFF0000, 100, 100);
+    sprite = new Sprite(width / 2, height / 2, rectTile, true);
     sprite.interaction.onClick = (e: hxd.Event) -> {
       trace("clicked");
     };
-    sprite.origin = new Point(rect.width / 2, rect.height / 2);
+    sprite.origin = new Point(0.5, 0.5);
     add(sprite, 0);
   }
 
