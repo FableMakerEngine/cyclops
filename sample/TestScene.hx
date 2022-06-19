@@ -1,5 +1,6 @@
 package sample;
 
+import hxd.File;
 import h3d.mat.Texture;
 import h2d.col.Point;
 import cyclops.Sprite;
@@ -18,6 +19,16 @@ class TestScene extends cyclops.Scene {
     testText.textAlign = h2d.Text.Align.Center;
     add(testText, 1);
     createRectSprite();
+    createLogo();
+  }
+
+  public function createLogo() {
+    var data = File.getBytes("res/img/logoSmall.png");
+    var lgooRes = hxd.res.Any.fromBytes('img/logoSmall.png', data);
+    var rectTile = lgooRes.toTile();
+    sprite = new Sprite(width / 2, height / 2, rectTile);
+    sprite.origin = new Point(0.5, 0.5);
+    add(sprite, 0);
   }
 
   public function createRectSprite() {
