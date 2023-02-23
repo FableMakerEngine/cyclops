@@ -1,4 +1,4 @@
-package core;
+package cyclops;
 
 import hxd.Key;
 import hxd.res.DefaultFont;
@@ -8,21 +8,21 @@ import h2d.Interactive;
 class Scene extends h2d.Scene {
   public var interaction: Interactive;
   @:isVar
-  public var game(get, set): Game = Game.instance;
+  public var game(get, set): Game;
   public var inteeraction: Interactive;
   public var console: Console;
   public var touchInput: TouchInput;
 
   public function new() {
     super();
-    interaction = new Interactive(width, height, this);
-    interaction.onClick = onClick;
-    interaction.onFocus = onFocus;
-    interaction.onFocusLost = onFocusLost;
-    interaction.onKeyDown = onKeyDown;
-    interaction.onKeyUp = onKeyUp;
-    interaction.cursor = null;
-    touchInput = new TouchInput(this);
+    // interaction = new Interactive(width, height, this);
+    // interaction.onClick = onClick;
+    // interaction.onFocus = onFocus;
+    // interaction.onFocusLost = onFocusLost;
+    // interaction.onKeyDown = onKeyDown;
+    // interaction.onKeyUp = onKeyUp;
+    // interaction.cursor = null;
+    // touchInput = new TouchInput(this);
   }
 
   public function set_game(game: Game) {
@@ -35,24 +35,8 @@ class Scene extends h2d.Scene {
   }
 
   public function setupConsole() {
-    if (!Utils.isConsleEnabled()) {
-      return;
-    }
-
     var consoleFont = DefaultFont.get().clone();
     console = new Console(consoleFont, this);
-
-    console.addCommand('version', 'Get System Data', [], () -> {
-      console.log(Utils.getVersion());
-    });
-
-    console.addCommand('platform', 'Get platform the game is running on', [], () -> {
-      console.log(Utils.getPlatform());
-    });
-
-    console.addCommand('gameName', 'Get name of the game', [], () -> {
-      console.log(Utils.getSystemData().name);
-    });
 
     #if debug
     console.show();
@@ -73,8 +57,8 @@ class Scene extends h2d.Scene {
       if (console.isActive()) {
         console.hide();
       } else {
-        console.runCommand('cls');
-        console.log('Console ready');
+        console.runCommand("cls");
+        console.log("Console ready");
         console.show();
       }
     }
