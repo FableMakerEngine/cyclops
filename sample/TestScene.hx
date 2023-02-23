@@ -8,6 +8,7 @@ import cyclops.Sprite;
 class TestScene extends cyclops.Scene {
   public var testText: h2d.Text;
   public var sprite: cyclops.Sprite;
+  public var logoSprite: cyclops.Sprite;
 
   private var isRotatingLeft: Bool = false;
 
@@ -18,24 +19,27 @@ class TestScene extends cyclops.Scene {
     testText.y = height / 2 - testText.textHeight / 2;
     testText.textAlign = h2d.Text.Align.Center;
     add(testText, 1);
-    createRectSprite();
     createLogo();
+    createRectSprite();
   }
 
   public function createLogo() {
     var data = File.getBytes("res/img/logoSmall.png");
     var lgooRes = hxd.res.Any.fromBytes('img/logoSmall.png', data);
     var rectTile = lgooRes.toTile();
-    sprite = new Sprite(width / 2, height / 2, rectTile);
-    sprite.origin = new Point(0.5, 0.5);
-    add(sprite, 0);
+    logoSprite = new Sprite(width / 2, height / 2, rectTile);
+    logoSprite.origin = new Point(0.5, 0.5);
+    add(logoSprite, 0);
   }
 
   public function createRectSprite() {
     var rectTile = h2d.Tile.fromColor(0xFF0000, 100, 100);
     sprite = new Sprite(width / 2, height / 2, rectTile, true);
-    sprite.interaction.onClick = (e: hxd.Event) -> {
-      trace("clicked");
+    sprite.interaction.onPush = (e: hxd.Event) -> {
+      sprite.tile = h2d.Tile.fromColor(0x1A1B79, 100, 100);
+    };
+    sprite.interaction.onRelease = (e: hxd.Event) -> {
+      sprite.tile = h2d.Tile.fromColor(0xFF0000, 100, 100);
     };
     sprite.origin = new Point(0.5, 0.5);
     add(sprite, 0);
