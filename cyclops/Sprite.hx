@@ -32,6 +32,7 @@ class Sprite extends h2d.Object {
   }
 
   function set_tile(tile: Tile) {
+    bitmap.tile = tile;
     return this.tile = tile;
   }
 
