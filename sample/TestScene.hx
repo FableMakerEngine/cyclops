@@ -1,5 +1,6 @@
 package sample;
 
+import hxd.Res;
 import hxd.File;
 import h3d.mat.Texture;
 import h2d.col.Point;
@@ -24,10 +25,8 @@ class TestScene extends cyclops.Scene {
   }
 
   public function createLogo() {
-    var data = File.getBytes("res/img/logoSmall.png");
-    var lgooRes = hxd.res.Any.fromBytes('img/logoSmall.png', data);
-    var rectTile = lgooRes.toTile();
-    logoSprite = new Sprite(width / 2, height / 2, rectTile);
+    var logoTile = Res.img.logoSmall.toTile();
+    logoSprite = new Sprite(width / 2, height / 2, logoTile);
     logoSprite.origin = new Point(0.5, 0.5);
     add(logoSprite, 0);
   }
@@ -62,6 +61,10 @@ class TestScene extends cyclops.Scene {
   public override function onResize() {
     testText.x = width / 2;
     testText.y = height / 2 - testText.textHeight / 2;
+    sprite.x = width / 2;
+    sprite.y = height / 2;
+    logoSprite.x = width / 2;
+    logoSprite.y = height / 2;
   }
 
   public override function update(dt: Float) {

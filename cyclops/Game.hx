@@ -25,14 +25,14 @@ class Game extends hxd.App {
   }
 
   public override function init() {
-    if (onReady != null) {
-      onReady(this);
-    }
     #if (hl && !debug)
     Res.initLocal();
     #else
     Res.initEmbed();
     #end
+    if (onReady != null) {
+      onReady(this);
+    }
   }
 
   public function changeScene(scene: Scene): Void {
