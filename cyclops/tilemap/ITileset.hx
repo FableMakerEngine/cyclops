@@ -8,7 +8,6 @@ typedef ITileset = {
   height: Int,
   gridSize: Int,
   tileWidth: Int,
-  tileHeight: Int
-  // We need to create the texture class which just inherhits from h2d.Tile
-  // texture: Texture;
+  tileHeight: Int,
+  texture: h2d.Tile
 }
