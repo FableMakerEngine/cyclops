@@ -20,6 +20,7 @@ class TestScene extends cyclops.Scene {
 
   public function new() {
     super();
+    createTilemap();
     testText = createText('Hello World!', 42);
     testText.x = width / 2;
     testText.y = height / 2 - testText.textHeight / 2;
@@ -27,7 +28,6 @@ class TestScene extends cyclops.Scene {
     add(testText, 1);
     createLogo();
     createRectSprite();
-    createTilemap();
   }
 
   public function createTilemap() {
