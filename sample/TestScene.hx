@@ -1,5 +1,10 @@
 package sample;
 
+import hxd.res.TiledMap.TiledMapData;
+import haxe.Json;
+import cyclops.tilemap.Tilemap;
+import cyclops.tilemap.ITilemapConfig;
+import cyclops.Utils;
 import hxd.Res;
 import hxd.File;
 import h3d.mat.Texture;
@@ -22,6 +27,19 @@ class TestScene extends cyclops.Scene {
     add(testText, 1);
     createLogo();
     createRectSprite();
+    createTilemap();
+  }
+
+  public function createTilemap() {
+    var mapData = Json.parse(Res.data.maps.Map1.entry.getText());
+    var parsedData: Dynamic = Utils.parseLdtkData(mapData);
+    // var mapData: TiledMapData = haxe.Json.parse(Res.data.maps.tiled_test.Map1.entry.getText());
+    var config: ITilemapConfig = {
+      tilesets: parsedData.tilesets,
+      layers: parsedData.layers,
+      level: parsedData.levels[0]
+    }
+    new TileMap(this, config);
   }
 
   public function createLogo() {
