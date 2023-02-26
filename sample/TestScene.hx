@@ -33,7 +33,6 @@ class TestScene extends cyclops.Scene {
   public function createTilemap() {
     var mapData = Json.parse(Res.data.maps.Map1.entry.getText());
     var parsedData: Dynamic = Utils.parseLdtkData(mapData);
-    // var mapData: TiledMapData = haxe.Json.parse(Res.data.maps.tiled_test.Map1.entry.getText());
     var config: ITilemapConfig = {
       tilesets: parsedData.tilesets,
       layers: parsedData.layers,
