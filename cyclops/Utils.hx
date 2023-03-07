@@ -1,11 +1,17 @@
 package cyclops;
 
+#if web
+import js.html.CanvasElement;
+#end
+import hxd.Window;
+import hxd.System;
+import haxe.Json;
 import cyclops.tilemap.ITileset;
 import cyclops.tilemap.ILayer;
 import cyclops.tilemap.ILevel;
 import cyclops.tilemap.ILevel.ILevelLayer;
-import hxd.System;
-import haxe.Json;
+
+using StringTools;
 
 typedef Config = {
   name: String,
@@ -45,6 +51,36 @@ class Utils {
   public static function isConsleEnabled(): Bool {
     var data = getSystemData();
     return data.enableConsole;
+  }
+
+  public static function isNwjs(): Bool {
+    var nwExists = true;
+    try {
+      nwExists = untyped nw;
+    } catch (error) {
+      if (error.message.contains('not defined')) {
+        nwExists = false;
+      }
+    }
+    return nwExists;
+  }
+
+  public static function resize(width: Int, height: Int, ?ignoreDpi: Bool = false) {
+    #if web
+    var pixelRatio: Float = js.Browser.window.devicePixelRatio;
+    var canvas: CanvasElement = @:privateAccess Window.getInstance().canvas;
+
+    if (pixelRatio > 1 && ignoreDpi) {
+      width = Math.floor(width / pixelRatio);
+      height = Math.floor(height / pixelRatio);
+    }
+
+    if (isNwjs()) {
+      untyped nw.Window.get().resizeTo(width, height);
+    }
+    #end
+
+    Window.getInstance().resize(width, height);
   }
 
   public static function parseLdtkData(data: Dynamic) {
