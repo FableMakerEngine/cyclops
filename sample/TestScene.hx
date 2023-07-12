@@ -15,11 +15,14 @@ class TestScene extends cyclops.Scene {
   public var testText: h2d.Text;
   public var sprite: cyclops.Sprite;
   public var logoSprite: cyclops.Sprite;
+  public var tilemap: TileMap;
 
   private var isRotatingLeft: Bool = false;
 
   public function new() {
     super();
+    Utils.resize(640, 480, true);
+    scaleMode = Stretch(640, 480);
     createTilemap();
     testText = createText('Hello World!', 42);
     testText.x = width / 2;
@@ -38,14 +41,14 @@ class TestScene extends cyclops.Scene {
       layers: parsedData.layers,
       level: parsedData.levels[0]
     }
-    new TileMap(this, config);
+    tilemap = new TileMap(this, config);
   }
 
   public function createLogo() {
     var logoTile = Res.img.logoSmall.toTile();
     logoSprite = new Sprite(width / 2, height / 2, logoTile);
     logoSprite.origin = new Point(0.5, 0.5);
-    add(logoSprite, 0);
+    add(logoSprite, 1);
   }
 
   public function createRectSprite() {
@@ -58,7 +61,7 @@ class TestScene extends cyclops.Scene {
       sprite.tile = h2d.Tile.fromColor(0xFF0000, 100, 100);
     };
     sprite.origin = new Point(0.5, 0.5);
-    add(sprite, 0);
+    add(sprite, 1);
   }
 
   public function createText(title: String, size: Int): h2d.Text {
@@ -76,12 +79,11 @@ class TestScene extends cyclops.Scene {
   }
 
   public override function onResize() {
-    testText.x = width / 2;
-    testText.y = height / 2 - testText.textHeight / 2;
-    sprite.x = width / 2;
-    sprite.y = height / 2;
-    logoSprite.x = width / 2;
-    logoSprite.y = height / 2;
+    var center = new Point(width / 2, height / 2);
+    // camera.screenToCamera(center);
+    testText.setPosition(center.x, center.y - testText.textHeight / 2);
+    sprite.setPosition(center.x, center.y);
+    logoSprite.setPosition(center.x, center.y);
   }
 
   public override function update(dt: Float) {
