@@ -2,7 +2,7 @@ package cyclops.tilemap;
 
 using Lambda;
 
-class TileMap extends h2d.Object {
+class Tilemap extends h2d.Object {
   public var config: ITilemapConfig;
 
   private var level: ILevel;
