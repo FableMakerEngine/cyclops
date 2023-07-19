@@ -15,7 +15,7 @@ class TestScene extends cyclops.Scene {
   public var testText: h2d.Text;
   public var sprite: cyclops.Sprite;
   public var logoSprite: cyclops.Sprite;
-  public var tilemap: TileMap;
+  public var tilemap: Tilemap;
 
   private var isRotatingLeft: Bool = false;
 
@@ -41,7 +41,7 @@ class TestScene extends cyclops.Scene {
       layers: parsedData.layers,
       level: parsedData.levels[0]
     }
-    tilemap = new TileMap(this, config);
+    tilemap = new Tilemap(this, config);
   }
 
   public function createLogo() {

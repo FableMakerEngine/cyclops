@@ -21,9 +21,13 @@ typedef Config = {
 
 class Utils {
   public static function getSystemData(): Config {
-    var data = Res.data.system.entry.getText();
-    var systemData: Config = Json.parse(data);
-    return systemData;
+    var data = null;
+    var systemData = null;
+    if (Res.loader.fs.exists('/data/syystem.json')) {
+      data = Res.load('data/system.json');
+      return Json.parse(data.toText());
+    }
+    return { name: '', version: '', enableConsole: false };
   }
 
   public static function getVersion(): String {
